@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Authors>Wayne Venables</Authors>
+    <Company>Codaris Consulting</Company>
+    <PackageId>Anki.Vector.SDK.Configure</PackageId>
+    <Product>Anki Vector SDK Configure</Product>
+    <Copyright>Copyright (c) 2019 Wayne Venables</Copyright>
+    <Description></Description>
+    <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PackageLicenseExpression />
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="StyleCop.Cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Anki.Vector.SDK" Version="0.6.0" />
+    <PackageReference Include="CommandLineParser" Version="2.6.0" />
+  </ItemGroup>
+
+</Project>

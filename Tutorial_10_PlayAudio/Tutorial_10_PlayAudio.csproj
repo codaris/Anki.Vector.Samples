@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="bensound-summer.mp3" />
+    <None Remove="vector_alert.wav" />
+    <None Remove="vector_bell_whistle.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="bensound-summer.mp3" />
+    <EmbeddedResource Include="vector_alert.wav" />
+    <EmbeddedResource Include="vector_bell_whistle.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Anki.Vector.SDK" Version="0.6.0" />
+    <PackageReference Include="NAudio" Version="1.9.0" />
+  </ItemGroup>
+
+</Project>
