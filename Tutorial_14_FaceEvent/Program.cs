@@ -17,33 +17,37 @@ namespace Tutorial_14_FaceEvent
         /// the lambda is called, which prints text to the console.  Vector will also say "I see a face" one time, and the program will exit when
         /// he finishes speaking.</para>
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        static async Task Main(string[] args)
+        static async Task Main()
         {
-            using (var robot = await Robot.NewConnection())
+            // Create a new connection to the first configured Vector
+            using var robot = await Robot.NewConnection();
+
+            Console.WriteLine("Requesting control of Vector...");
+            await robot.Control.RequestControl();
+
+            Console.WriteLine("Enabling face detection...");
+            await robot.Vision.EnableFaceDetection();
+
+            Console.WriteLine("Move Vector's Head and Lift to make it easy to see a face.");
+            await robot.Behavior.SetHeadAngle(45.Degrees());
+            await robot.Behavior.SetLiftHeight(0);
+
+            bool sawFace = false;
+            bool exit = false;
+
+            robot.Events.ObservedFace += async (sender, e) =>
             {
-                Console.WriteLine("Requesting control of Vector...");
-                await robot.Control.RequestControl();
+                if (sawFace) return;
+                sawFace = true;
+                Console.WriteLine("Vector sees a face");
+                await robot.Behavior.SayText("I see a face");
+                exit = true;
+            };
 
-                Console.WriteLine("Enabling face detection...");
-                await robot.Vision.EnableFaceDetection();
-
-                Console.WriteLine("Move Vector's Head and Lift to make it easy to see a face.");
-                await robot.Behavior.SetHeadAngle(45.Degrees());
-                await robot.Behavior.SetLiftHeight(0);
-
-                bool sawFace = false;
-                robot.Events.ObservedFace += async (sender, e) =>
-                {
-                    Console.WriteLine("Vector sees a face");
-                    await robot.Behavior.SayText("I see a face");
-                    sawFace = true;
-                };
-
-                while (!sawFace && !Console.KeyAvailable)
-                {
-                    await Task.Delay(500);
-                }
+            Console.WriteLine("Press a key to exit before Vector sees a face...");
+            while (!exit && !Console.KeyAvailable)
+            {
+                await Task.Delay(500);
             }
         }
     }

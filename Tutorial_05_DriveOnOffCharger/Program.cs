@@ -13,21 +13,19 @@ namespace Tutorial_05_DriveOnOffCharger
         /// <summary>
         /// Tell Vector to drive on and off the charger.
         /// </summary>
-        /// <param name="args">The command line arguments.</param>
-        public static async Task Main(string[] args)
+        public static async Task Main()
         {
             // Create a new connection to the first configured Vector
-            using (var robot = await Robot.NewConnection())
-            {
-                Console.WriteLine("Requesting control of Vector...");
-                await robot.Control.RequestControl();
+            using var robot = await Robot.NewConnection();
 
-                Console.WriteLine("Drive Vector on charger...");
-                await robot.Behavior.DriveOnCharger();
+            Console.WriteLine("Requesting control of Vector...");
+            await robot.Control.RequestControl();
 
-                Console.WriteLine("Drive Vector off charger...");
-                await robot.Behavior.DriveOffCharger();
-            }
+            Console.WriteLine("Drive Vector on charger...");
+            await robot.Behavior.DriveOnCharger();
+
+            Console.WriteLine("Drive Vector off charger...");
+            await robot.Behavior.DriveOffCharger();
         }
     }
 }

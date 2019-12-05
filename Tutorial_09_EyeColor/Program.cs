@@ -14,17 +14,16 @@ namespace Tutorial_09_EyeColor
         /// Set Vector's eye color.
         /// <para>Note that Vector's eye color will return to normal when the connection terminates.</para>
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        static async Task Main(string[] args)
+        static async Task Main()
         {
-            using (var robot = await Robot.NewConnection())
-            {
-                Console.WriteLine("Set Vector's eye color to purple...");
-                await robot.Behavior.SetEyeColor(0.83f, 0.76f);
+            // Create a new connection to the first configured Vector
+            using var robot = await Robot.NewConnection();
 
-                Console.WriteLine("Press any key to exit...");
-                Console.ReadKey();
-            }
+            Console.WriteLine("Set Vector's eye color to purple...");
+            await robot.Behavior.SetEyeColor(0.83f, 0.76f);
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }

@@ -16,38 +16,37 @@ namespace Tutorial_12_ControlPriorityLevel
         /// <para>This script demonstrates how to use the highest level SDK behavior control <see cref="Anki.Vector.ControlPriority.OverrideBehaviors"/> to make Vector perform actions that 
         /// normally take priority over the SDK.  These commands will not succeed at <see cref="Anki.Vector.ControlPriority.Default"/>.</para>
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        static async Task Main(string[] args)
+        static async Task Main()
         {
-            using (var robot = await Robot.NewConnection())
+            // Create a new connection to the first configured Vector
+            using var robot = await Robot.NewConnection();
+
+            Console.WriteLine("Requesting override control of Vector...");
+            await robot.Control.RequestControl(ControlPriority.OverrideBehaviors);
+
+            // Say pick me up and wait for a key press to exit
+            await robot.Behavior.SayText("Pick me up!");
+            Console.WriteLine("Waiting for Vector to be picked up, press any key to exit...");
+
+            // Wait for vector to be picked up or key press
+            while (!robot.Status.IsPickedUp && !Console.KeyAvailable)
             {
-                Console.WriteLine("Requesting override control of Vector...");
-                await robot.Control.RequestControl(ControlPriority.OverrideBehaviors);
-
-                // Say pick me up and wait for a key press to exit
-                await robot.Behavior.SayText("Pick me up!");
-                Console.WriteLine("Waiting for Vector to be picked up, press any key to exit...");
-
-                // Wait for vector to be picked up or key press
-                while (!robot.Status.IsPickedUp && !Console.KeyAvailable)
-                {
-                    // Wait 0.5 seconds
-                    await Task.Delay(500);
-                }
-
-                // Exit if key pressed
-                if (Console.KeyAvailable) return;
-
-                // If Vector is picked up move him around
-                Console.WriteLine("Vector is picked up...");
-                await robot.Behavior.SayText("Hold on tight");
-                Console.WriteLine("Setting wheel motors...");
-                await robot.Motors.SetWheelMotors(75, -75);
+                // Wait 0.5 seconds
                 await Task.Delay(500);
-                await robot.Motors.SetWheelMotors(-75, 75);
-                await Task.Delay(500);
-                await robot.Motors.StopAllMotors();
             }
+
+            // Exit if key pressed
+            if (Console.KeyAvailable) return;
+
+            // If Vector is picked up move him around
+            Console.WriteLine("Vector is picked up...");
+            await robot.Behavior.SayText("Hold on tight");
+            Console.WriteLine("Setting wheel motors...");
+            await robot.Motors.SetWheelMotors(75, -75);
+            await Task.Delay(500);
+            await robot.Motors.SetWheelMotors(-75, 75);
+            await Task.Delay(500);
+            await robot.Motors.StopAllMotors();
         }
     }
 }
