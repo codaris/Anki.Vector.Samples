@@ -8,6 +8,9 @@ This solution contains 2 applications and 15 tutorial applications for the Anki 
 
 * [Anki Vector .NET SDK Documentation](https://codaris.github.io/Anki.Vector.SDK/)
 
+* [Anki Vector .NET SDK GitHub Project](https://github.com/codaris/Anki.Vector.SDK)
+
+
 ### Vector SDK Configuration and Authentication
 
 In order to run these samples, you will need authenticate with the robot and create a configuration file
@@ -92,7 +95,7 @@ Make Vector turn toward a face.  This script shows off the turn towards face beh
 
 ## Getting Help
 
-There are numerous places to get help with programming Vector using the .NET SDK
+There are numerous places to get help with programming Vector using the .NET SDK:
 
 * **Official Anki developer forums**: https://forums.anki.com/
 
