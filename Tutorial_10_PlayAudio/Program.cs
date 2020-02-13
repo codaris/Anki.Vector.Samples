@@ -35,7 +35,7 @@ namespace Tutorial_10_PlayAudio
             var playback = robot.Audio.PlayStream(reader, frameRate, 50);
 
             Console.WriteLine("Press a key to stop playback");
-            Console.ReadKey();
+            await Task.Run(() => Console.ReadKey(true));
 
             await robot.Audio.CancelPlayback();
 
@@ -44,7 +44,7 @@ namespace Tutorial_10_PlayAudio
             Console.WriteLine($"Playback result: {result}");
 
             Console.WriteLine("Press a key to end.");
-            Console.ReadKey();
+            await Task.Run(() => Console.ReadKey(true));
         }
     }
 }

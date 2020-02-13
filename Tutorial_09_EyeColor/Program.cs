@@ -23,7 +23,7 @@ namespace Tutorial_09_EyeColor
             await robot.Behavior.SetEyeColor(0.83f, 0.76f);
 
             Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            await Task.Run(() => Console.ReadKey(true));
         }
     }
 }

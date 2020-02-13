@@ -28,7 +28,7 @@ namespace Tutorial_13_UserIntent
             };
 
             Console.WriteLine("Vector is waiting for a voice command like 'Hey Vector!  What time is it?'  Press any key to exit...");
-            Console.ReadKey();
+            await Task.Run(() => Console.ReadKey(true));
         }
     }
 }
