@@ -17,7 +17,7 @@ namespace Tutorial_17_AppIntent
         static async Task Main()
         {
             using var robot = await Robot.NewConnection();
-            var ret = await robot.AppIntent("intent_imperative_fetchcube");
+            var ret = await robot.Behavior.AppIntent("intent_imperative_fetchcube");
             Console.WriteLine($"Asked Vector to fetch cube..{ret}");
 
             Console.WriteLine("Press any key to exit...");

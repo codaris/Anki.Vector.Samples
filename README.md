@@ -93,6 +93,18 @@ Wait for Vector to see a face, and then print output to the console. This script
 
 Make Vector turn toward a face.  This script shows off the turn towards face behavior.  It will wait for a face and then constantly turn towards it to keep it in frame.
 
+### `Tutorial_16_FeatureStatus`
+
+Demonstration of the FeatureStatus event that shows which features Vector's AI is used to perform operations.  This sample was contributed by [Randall Maas](https://github.com/randym32).
+
+### `Tutorial_17_AppIntent`
+
+Demonstration of submitting AppIntents to Vector for processing.  This sample was contributed by [Randall Maas](https://github.com/randym32).
+
+### `Tutorial_18_XboxDrive`
+
+Drive Vector around with an XBox Controller.  This sample was contributed by [Randall Maas](https://github.com/randym32).
+
 ## Getting Help
 
 There are numerous places to get help with programming Vector using the .NET SDK:

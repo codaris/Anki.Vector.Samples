@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Anki.Vector.SDK" Version="0.6.4" />
+    <PackageReference Include="Anki.Vector.SDK" Version="0.6.5" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
   </ItemGroup>
 

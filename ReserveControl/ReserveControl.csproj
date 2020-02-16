@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Anki.Vector.SDK" Version="0.6.4" />
+    <PackageReference Include="Anki.Vector.SDK" Version="0.6.5" />
   </ItemGroup>
 
 </Project>
