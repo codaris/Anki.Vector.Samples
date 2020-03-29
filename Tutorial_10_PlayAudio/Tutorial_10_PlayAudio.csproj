@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Anki.Vector.SDK" Version="0.6.6" />
+    <PackageReference Include="Anki.Vector.SDK" Version="0.6.7" />
     <PackageReference Include="NAudio" Version="1.10.0" />
   </ItemGroup>
 
